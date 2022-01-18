@@ -9,6 +9,6 @@ body {
 	to { opacity: 1; }
 }
 
-#h:hover {
+#profile:hover {
 	text-decoration: underline;
 }
