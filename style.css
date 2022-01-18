@@ -1,6 +1,5 @@
-html {
-	margin-top: 25px;
-    font-size: 21px;
+body {
+	margin-top: 20px;
     text-align: center;
     animation: fadein 2s;
 }
