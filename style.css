@@ -1,13 +1,15 @@
 body {
+	background-color: rgba(24, 24, 24);
+	color: white;
 	margin-top: 20px;
 	font-size: 20px;
 	text-align: center;
-	animation: fadein 2s;
+	animation: fadein 5s;
 }
 
 @keyframes fadein {
 	from {
-	  opacity: 0;
+		opacity: 0;
 	}
 
 	to {
@@ -17,6 +19,6 @@ body {
 
 p {
 	border-style: solid;
-	border-radius: 10px;
-	border-color: lightblue;
+	border-color: lightslategray;
+	background-color: black;
 }
