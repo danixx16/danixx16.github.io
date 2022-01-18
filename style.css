@@ -1,10 +1,10 @@
 body {
-	background-color: rgba(24, 24, 24);
+	background: rgba(24, 24, 24);
 	color: white;
 	margin-top: 20px;
 	font-size: 20px;
 	text-align: center;
-	animation: fadein 5s;
+	animation: fadein 2s;
 }
 
 @keyframes fadein {
@@ -21,4 +21,37 @@ p {
 	border-style: solid;
 	border-color: lightslategray;
 	background-color: black;
+	border-radius: 10px;
+}
+a {
+	color: pink;
+	filter: blur(3px);
+	animation: blur 1s;
+}
+a:hover {
+	animation: unblur 1s;
+	animation-fill-mode: forwards;
+}
+
+@keyframes blur {
+	from {
+		filter: none;
+		color: purple;
+	}
+
+	to {
+		filter: blur(3px);
+		color: pink;
+	}
+}
+
+@keyframes unblur {
+	from {
+		filter: blur(3px);
+	}
+
+	to {
+		filter: none;
+		color: purple;
+	}
 }
