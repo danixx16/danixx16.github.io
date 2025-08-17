@@ -1,45 +1,355 @@
-<!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cool Resources</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #2c2c2c;
+      color: #e0d9f0;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
 
-	<head>
-		<title>Dani's Site</title>
-		<link rel="icon" href="./resources/favicon.ico">
-		<link rel="stylesheet" href="./style.css">
-		<script src="./script.js"></script>
-		<meta name="author" content="Dani">
-		<meta name="description" content="Dani's webswite (vewwy uwu)">
-	</head>
+    header {
+      background: linear-gradient(135deg, rgba(176,102,255,0.7), rgba(107,0,255,0.6));
+      backdrop-filter: blur(15px);
+      padding: 3rem 1rem;
+      text-align: center;
+      border-bottom: 2px solid #6a0dad;
+      box-shadow: 0 4px 20px rgba(107,0,255,0.4);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
 
-	<body style="background:rgba(24, 24, 24); color:white">
-		<div id="profile">
-			<h2>
-				✧･ﾟ: * Pwofiwe * :･ﾟ✧
-			</h2>
-			<hr style="width:50%; animation: grow 2s">
-			<div class="profilebox">
-				Name: Dani<br>
-				PP Size: 🐛<br>
-				Where Live?: Cheese Place<br>
-				Living Status: n<br>
-				How: Because<br>
-				Favorite Pet: Mine<br>
-				Hawaii: sometimes
-			</div>
-			<div class="profilebox">
-				Discord: <a href="https://discords.com/bio/p/danixx" target="_blank">dsc.bio</a><br>
-				Revolt: <a title="No Link">danixx</a><br>
-				AniList: <a href="https://anilist.co/user/danixoxo" target="_blank">danixoxo</a><br>
-				Last.FM: <a href="https://last.fm/user/ellaxx_16" target="_blank">ellaxx_16</a><br>
-				Spotify: <a href="https://open.spotify.com/user/whie9u6qxgfsyxemhk7ozxhna" target="_blank">xvi</a><br>
-				SoundCloud: <a href="https://soundcloud.com/danixoxo16" target="_blank">Dani</a><br>
-				Instagram: <a href="https://instagram.com/danixx.16" target="_blank">danixx.16</a><br>
-				GitHub: <a href="https://github.com/danixx16" target="_blank">danixx16</a><br>
-				<a href="https://danixx16.carrd.co" target="_blank">Carrd Profile</a>
-			</div>
-			<div class="profilebox">
-				
-			</div>
-		</div>
-	</body>
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      color: #fff;
+      text-shadow: 1px 1px 5px #4b0073;
+    }
 
+    main {
+      max-width: 1000px;
+      margin: auto;
+      padding: 2rem;
+    }
+
+    /* Device Tabs */
+    .device-tabs {
+      display: flex;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .device-tab-button {
+      background: rgba(58, 42, 74, 0.7);
+      border: none;
+      padding: 0.8rem 1.5rem;
+      margin: 0 0.5rem;
+      cursor: pointer;
+      color: #e0d9f0;
+      font-size: 1rem;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 2px 10px rgba(107,0,255,0.3);
+    }
+
+    .device-tab-button:hover {
+      background: rgba(107,0,255,0.6);
+      transform: translateY(-2px) scale(1.03);
+    }
+
+    .device-tab-button.active {
+      background: rgba(176,102,255,0.8);
+      color: #2c2c2c;
+      box-shadow: 0 0 15px #b066ff, 0 0 30px rgba(176,102,255,0.5);
+    }
+
+    /* Section Tabs */
+    .section-tabs {
+      display: flex;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+    }
+
+    .section-tab-button {
+      background: rgba(58, 42, 74, 0.5);
+      border: none;
+      padding: 0.6rem 1.2rem;
+      margin: 0 0.5rem 0.5rem 0;
+      cursor: pointer;
+      color: #e0d9f0;
+      font-size: 0.95rem;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 2px 8px rgba(107,0,255,0.3);
+    }
+
+    .section-tab-button:hover {
+      background: rgba(107,0,255,0.5);
+      transform: translateY(-1px) scale(1.02);
+    }
+
+    .section-tab-button.active {
+      background: rgba(176,102,255,0.6);
+      color: #2c2c2c;
+      box-shadow: 0 0 12px #b066ff, 0 0 20px rgba(176,102,255,0.4);
+    }
+
+    /* Tab content */
+    .tab-content {
+      display: none;
+      animation: fadeSlide 0.4s ease forwards;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    @keyframes fadeSlide {
+      0% {opacity: 0; transform: translateY(10px);}
+      100% {opacity: 1; transform: translateY(0);}
+    }
+
+    /* App panels */
+    .app-panel {
+      background: rgba(58, 42, 74, 0.6);
+      border-left: 5px solid #b066ff;
+      padding: 1rem 1.2rem;
+      margin: 0.75rem 0;
+      border-radius: 16px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 4px 15px rgba(107,0,255,0.2);
+    }
+
+    .app-panel:hover {
+      background: rgba(75, 51, 128, 0.7);
+      transform: translateX(6px) scale(1.02);
+      box-shadow: 0 0 20px #b066ff, 0 0 30px rgba(176,102,255,0.4);
+    }
+
+    .app-panel h4 {
+      margin: 0;
+      color: #e0c3ff;
+      font-size: 1.1rem;
+    }
+
+    .app-panel p {
+      margin: 0.3rem 0 0 0;
+      font-size: 0.95rem;
+      color: #d0c0ff;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      border-top: 2px solid #6a0dad;
+      margin-top: 3rem;
+      font-size: 0.9rem;
+      color: #c5b3e6;
+    }
+
+    /* Hide all device content by default */
+    .device-tab-content {
+      display: none;
+    }
+
+    .device-tab-content.active {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Cool Resources I've Found Over the Years</h1>
+  </header>
+
+  <main>
+    <!-- Device Tabs -->
+    <div class="device-tabs">
+      <button class="device-tab-button active" onclick="showDeviceTab(event, 'android')">Android</button>
+      <button class="device-tab-button" onclick="showDeviceTab(event, 'windows')">Windows</button>
+    </div>
+
+    <!-- Android Content -->
+    <div id="android" class="device-tab-content">
+      <div class="section-tabs">
+        <button class="section-tab-button" onclick="showSectionTab(event, 'android-media')">Media / Entertainment</button>
+        <button class="section-tab-button" onclick="showSectionTab(event, 'android-mod')">Modifications</button>
+        <button class="section-tab-button" onclick="showSectionTab(event, 'android-misc')">Miscellaneous</button>
+      </div>
+
+      <div id="android-media" class="tab-content">
+        <a href="#" class="app-panel">
+          <h4>ReVanced</h4>
+          <p>Modify apps like YouTube, Spotify, TikTok for premium features and ad removal.</p>
+        </a>
+        <a href="#" class="app-panel">
+          <h4>Aniyomi</h4>
+          <p>All-in-one anime + manga/manhwa viewing app.</p>
+        </a>
+        <a href="#" class="app-panel">
+          <h4>Stremio</h4>
+          <p>Stream movies, TV shows, and more with addons and torrent integration.</p>
+        </a>
+      </div>
+
+      <div id="android-mod" class="tab-content">
+        <a href="#" class="app-panel">
+          <h4>xManager</h4>
+          <p>Pre-patched releases of Spotify ReVanced.</p>
+        </a>
+        <a href="#" class="app-panel">
+          <h4>MyInsta</h4>
+          <p>Instagram mod that removes ads, improves privacy, and adds functionality.</p>
+        </a>
+      </div>
+
+      <div id="android-misc" class="tab-content">
+        <a href="#" class="app-panel">
+          <h4>AudioRelay</h4>
+          <p>Stream audio from your PC to phone or other devices.</p>
+        </a>
+        <a href="#" class="app-panel">
+          <h4>Iriun Webcam</h4>
+          <p>Turn your phone into a wireless webcam for PC.</p>
+        </a>
+        <a href="#" class="app-panel">
+          <h4>KDE Connect</h4>
+          <p>Phone-PC integration for file transfer, notifications, and controls.</p>
+        </a>
+        <a href="#" class="app-panel">
+          <h4>Lemuroid</h4>
+          <p>Retro gaming emulator for Android devices.</p>
+        </a>
+      </div>
+    </div>
+
+    <!-- Windows Content -->
+    <div id="windows" class="device-tab-content">
+      <div class="section-tabs">
+        <button class="section-tab-button" onclick="showSectionTab(event, 'windows-media')">Media / Entertainment</button>
+        <button class="section-tab-button" onclick="showSectionTab(event, 'windows-mod')">Modifications</button>
+        <button class="section-tab-button" onclick="showSectionTab(event, 'windows-misc')">Miscellaneous</button>
+      </div>
+
+      <div id="windows-media" class="tab-content">
+        <a href="#" class="app-panel">
+          <h4>Spicetify</h4>
+          <p>Add themes, visualizers, and adblock to Spotify.</p>
+        </a>
+        <a href="#" class="app-panel">
+          <h4>CrunchyDL</h4>
+          <p>Download episodes straight from Crunchyroll.</p>
+        </a>
+        <a href="#" class="app-panel">
+          <h4>Steam Workshop Downloader</h4>
+          <p>Download workshop items from a Steam link.</p>
+        </a>
+        <a href="#" class="app-panel">
+          <h4>BetterDiscord</h4>
+          <p>Add themes and extensions to Discord for a customized experience.</p>
+        </a>
+      </div>
+
+      <div id="windows-mod" class="tab-content">
+        <a href="#" class="app-panel">
+          <h4>StartAllBack</h4>
+          <p>Customize Windows Start Menu, Taskbar, and File Explorer.</p>
+        </a>
+        <a href="#" class="app-panel">
+          <h4>Style2Paints</h4>
+          <p>AI-driven line art and sketch colorization tool.</p>
+        </a>
+        <a href="#" class="app-panel">
+          <h4>Pydroid</h4>
+          <p>Run Python code on Android with IDE functionality.</p>
+        </a>
+        <a href="#" class="app-panel">
+          <h4>Tailscale</h4>
+          <p>Secure networking tool for VPN-like connectivity.</p>
+        </a>
+      </div>
+
+      <div id="windows-misc" class="tab-content">
+        <a href="#" class="app-panel">
+          <h4>Brave / Vivaldi</h4>
+          <p>Privacy-first browsers with custom features and extensions.</p>
+        </a>
+        <a href="#" class="app-panel">
+          <h4>Proton</h4>
+          <p>Secure services including email, VPN, and more.</p>
+        </a>
+        <a href="#" class="app-panel">
+          <h4>IsThereAnyDeal</h4>
+          <p>Track PC game deals across stores.</p>
+        </a>
+        <a href="#" class="app-panel">
+          <h4>Koalageddon</h4>
+          <p>Steam DLC unlocker for owned games.</p>
+        </a>
+        <a href="#" class="app-panel">
+          <h4>FMHY</h4>
+          <p>Huge list of trusted sites for pirating & modifying apps.</p>
+        </a>
+        <a href="#" class="app-panel">
+          <h4>Rezi</h4>
+          <p>Pirated game search engine.</p>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>Made with ❤️ by Dani</p>
+  </footer>
+
+  <script>
+    function showDeviceTab(event, deviceId) {
+      // Hide all devices + all section contents
+      document.querySelectorAll('.device-tab-content').forEach(tab => {
+        tab.classList.remove('active');
+        tab.querySelectorAll('.tab-content').forEach(section => section.classList.remove('active'));
+        tab.querySelectorAll('.section-tab-button').forEach(btn => btn.classList.remove('active'));
+      });
+
+      // Remove active class from all device buttons
+      document.querySelectorAll('.device-tab-button').forEach(btn => btn.classList.remove('active'));
+
+      // Show selected device
+      const selectedDevice = document.getElementById(deviceId);
+      selectedDevice.classList.add('active');
+      event.currentTarget.classList.add('active');
+
+      // Show first section tab of selected device
+      const firstSectionBtn = selectedDevice.querySelector('.section-tab-button');
+      if(firstSectionBtn) firstSectionBtn.click();
+    }
+
+    function showSectionTab(event, sectionId) {
+      const container = event.currentTarget.closest('.device-tab-content');
+      container.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+      container.querySelectorAll('.section-tab-button').forEach(btn => btn.classList.remove('active'));
+      document.getElementById(sectionId).classList.add('active');
+      event.currentTarget.classList.add('active');
+    }
+
+    // Initialize first device tab
+    document.querySelectorAll('.device-tab-button.active')[0].click();
+  </script>
+</body>
 </html>
