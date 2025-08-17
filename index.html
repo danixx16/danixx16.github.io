@@ -5,199 +5,93 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cool Resources</title>
 <style>
-  html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-  }
+  html, body { height: 100%; margin: 0; padding: 0; }
   body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    color: #e0d9f0;
-    line-height: 1.6;
-    overflow-x: hidden;
+    display: flex; flex-direction: column; min-height: 100vh;
+    color: #e0d9f0; line-height: 1.6; overflow-x: hidden;
     background: radial-gradient(ellipse at bottom, #69354a 0%, #5f3569 50%, #69353d 100%);
     background-attachment: fixed;
   }
   body::before {
     content: "";
-    position: fixed;
-    top:0; left:0;
-    width:100%; height:100%;
+    position: fixed; top:0; left:0; width:100%; height:100%;
     background: transparent url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="2" height="2"><circle cx="1" cy="1" r="1" fill="white" /></svg>') repeat;
-    opacity: 0.05;
-    pointer-events: none;
+    opacity: 0.05; pointer-events: none;
   }
-
   header {
     background: radial-gradient(ellipse at bottom, #69354a 0%, #5f3569 50%, #69353d 100%);
-    padding: 3rem 1rem;
-    text-align: center;
-    border-bottom: 2px solid #6a0dad;
-    box-shadow: 0 4px 20px rgba(107,0,255,0.4);
-    position: sticky;
-    top: 0;
-    z-index: 10;
+    padding: 3rem 1rem; text-align: center; border-bottom: 2px solid #6a0dad;
+    box-shadow: 0 4px 20px rgba(107,0,255,0.4); position: sticky; top: 0; z-index: 10;
     transition: border-bottom 0.4s ease, padding 0.4s ease;
   }
-  header.scrolled {
-    border-bottom: 0 solid transparent;
-    padding: 2rem 1rem;
-  }
-  header h1 {
-    margin: 0;
-    font-size: 2.5rem;
-    color: #fff;
-    text-shadow: 1px 1px 5px #4b0073;
-  }
-  main {
-    max-width: 1000px;
-    margin: auto;
-    padding: 2rem;
-    flex: 1;
-  }
+  header.scrolled { border-bottom: 0 solid transparent; padding: 2rem 1rem; }
+  header h1 { margin: 0; font-size: 2.5rem; color: #fff; text-shadow: 1px 1px 5px #4b0073; }
+  main { max-width: 1000px; margin: auto; padding: 2rem; flex: 1; }
 
-  /* Device Tabs */
-  .device-tabs {
-    display: flex;
-    margin-bottom: 1rem;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-  }
+  .device-tabs { display: flex; margin-bottom: 1rem; flex-wrap: wrap; justify-content: center; gap: 10px; align-items: center; }
+  .divider { width: 2px; height: 35px; background: rgba(255,255,255,0.2); border-radius: 2px; margin: 0 10px; }
   .device-tab-button {
-    background: rgba(58, 42, 74, 0.7);
-    border: none;
-    padding: 0.8rem 1.5rem;
-    cursor: pointer;
-    color: #e0d9f0;
-    font-size: 1rem;
-    border-radius: 12px;
-    transition: all 0.4s ease;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 2px 10px rgba(107,0,255,0.3);
-    position: relative;
+    background: rgba(58, 42, 74, 0.7); border: none; padding: 0.8rem 1.5rem;
+    cursor: pointer; color: #e0d9f0; font-size: 1rem; border-radius: 12px;
+    transition: all 0.4s ease; backdrop-filter: blur(10px);
+    box-shadow: 0 2px 10px rgba(107,0,255,0.3); position: relative;
   }
-  .device-tab-button:hover {
-    background: rgba(107,0,255,0.6);
-    transform: translateY(-2px) scale(1.03);
-  }
+  .device-tab-button:hover { background: rgba(107,0,255,0.6); transform: translateY(-2px) scale(1.03); }
   .device-tab-button.active {
-    background: rgba(176,102,255,0.8);
-    color: #2c2c2c;
+    background: rgba(176,102,255,0.8); color: #2c2c2c;
     box-shadow: 0 0 15px #b066ff, 0 0 30px rgba(176,102,255,0.5);
   }
 
-  /* Section Tabs - pill style */
-  .section-tabs {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 2rem;
-    background: rgba(75, 51, 128, 0.5);
-    border-radius: 50px;
-    padding: 5px;
-    gap: 5px;
-  }
+  .section-tabs { display: flex; justify-content: center; margin-bottom: 2rem; background: rgba(75, 51, 128, 0.5); border-radius: 50px; padding: 5px; gap: 5px; }
   .section-tab-button {
-    border: none;
-    padding: 0.8rem 1.5rem;
-    background: transparent;
-    color: #e0d9f0;
-    font-size: 1rem;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: all 0.4s ease;
-    flex: 1;
-    text-align: center;
-    position: relative;
+    border: none; padding: 0.8rem 1.5rem; background: transparent; color: #e0d9f0;
+    font-size: 1rem; border-radius: 50px; cursor: pointer; transition: all 0.4s ease;
+    flex: 1; text-align: center; position: relative;
   }
   .section-tab-button:hover { background: rgba(107,0,255,0.6); }
-
-  /* Underline animation for section tabs */
   .section-tab-button::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    width: 0%;
-    height: 3px;
-    background: #b066ff;
-    border-radius: 2px;
-    transition: all 0.3s ease;
-    transform: translateX(-50%);
+    content: ''; position: absolute; bottom: 0; left: 50%; width: 0%; height: 3px;
+    background: #b066ff; border-radius: 2px; transition: all 0.3s ease; transform: translateX(-50%);
   }
-  .section-tab-button:hover::after,
-  .section-tab-button.active::after {
-    width: 80%;
-  }
+  .section-tab-button:hover::after, .section-tab-button.active::after { width: 80%; }
 
-  .tab-content {
-    display: none;
-    animation: fadeSlide 0.4s ease forwards;
-  }
+  .tab-content { display: none; animation: fadeSlide 0.4s ease forwards; }
   .tab-content.active { display: block; }
-  @keyframes fadeSlide {
-    0% {opacity: 0; transform: translateY(10px);}
-    100% {opacity: 1; transform: translateY(0);}
-  }
+  @keyframes fadeSlide { 0% {opacity: 0; transform: translateY(10px);} 100% {opacity: 1; transform: translateY(0);} }
 
   .app-panel {
-    background: rgba(58, 42, 74, 0.6);
-    border-left: 5px solid #b066ff;
-    padding: 1rem 1.2rem;
-    margin: 0.75rem 0;
-    border-radius: 16px;
-    transition: all 0.3s ease;
-    cursor: pointer;
-    text-decoration: none;
-    color: inherit;
-    display: block;
-    backdrop-filter: blur(12px);
+    background: rgba(58, 42, 74, 0.6); border-left: 5px solid #b066ff; padding: 1rem 1.2rem;
+    margin: 0.75rem 0; border-radius: 16px; transition: all 0.3s ease; cursor: pointer;
+    text-decoration: none; color: inherit; display: block; backdrop-filter: blur(12px);
     box-shadow: 0 4px 15px rgba(107,0,255,0.2);
   }
   .app-panel:hover {
-    background: rgba(75, 51, 128, 0.7);
-    transform: translateX(6px) scale(1.02);
+    background: rgba(75, 51, 128, 0.7); transform: translateX(6px) scale(1.02);
     box-shadow: 0 0 20px #b066ff, 0 0 30px rgba(176,102,255,0.4);
   }
   .app-panel h4 { margin: 0; color: #e0c3ff; font-size: 1.1rem; }
   .app-panel p { margin: 0.3rem 0 0 0; font-size: 0.95rem; color: #d0c0ff; }
 
-  footer {
-    text-align: center;
-    padding: 1.5rem;
-    border-top: 2px solid #6a0dad;
-    font-size: 0.9rem;
-    color: #c5b3e6;
-    background: #2c2c2c;
-  }
+  footer { text-align: center; padding: 1.5rem; border-top: 2px solid #6a0dad; font-size: 0.9rem; color: #c5b3e6; background: #2c2c2c; }
 
   .device-tab-content { display: none; }
   .device-tab-content.active { display: block; }
 
-  .planned-dropdown { margin-top: 2rem; text-align: center; }
-  .planned-btn {
-    background: rgba(107,0,255,0.6);
-    color: #fff;
-    border: none;
-    padding: 0.6rem 1.2rem;
-    cursor: pointer;
-    border-radius: 12px;
-    font-size: 1rem;
+  .discord-msg { text-align: center; margin-top: 2rem; color: #b066ff; font-size: 1rem; }
+
+  .back-button {
+    display: inline-block; margin-bottom: 1rem; padding: 0.6rem 1.2rem; border-radius: 12px;
+    background: rgba(107,0,255,0.7); color: #fff; text-decoration: none; font-weight: bold;
     transition: all 0.3s ease;
   }
-  .planned-btn:hover { background: rgba(176,102,255,0.7); }
-  .planned-list { margin-top: 0.5rem; display: none; color: #d0c0ff; }
-  .planned-list.show { display: block; }
-
+  .back-button:hover { background: rgba(176,102,255,0.8); transform: scale(1.05); }
 </style>
 </head>
 <body>
 
 <header>
-  <h1>Dani's List of Apps & Resources</h1>
+  <h1>Apps & Resources</h1>
 </header>
 
 <main>
@@ -205,6 +99,8 @@
     <button class="device-tab-button active" onclick="showDeviceTab(event, 'android')">Android</button>
     <button class="device-tab-button" onclick="showDeviceTab(event, 'windows')">Windows</button>
     <button class="device-tab-button" onclick="showDeviceTab(event, 'universal')">Universal</button>
+    <div class="divider"></div>
+    <button class="device-tab-button" onclick="showDeviceTab(event, 'guides')">Guides</button>
   </div>
 
   <!-- Android Content -->
@@ -216,26 +112,26 @@
     </div>
 
     <div id="android-media" class="tab-content">
-      <a href="https://revanced.app" target="_blank" class="app-panel"><h4>ReVanced</h4><p>Modify apps like YouTube, Spotify, TikTok for premium features and ad removal.</p></a>
-      <a href="https://wotaku.wiki/guides/music/echo#transferring-playlist" target="_blank" class="app-panel"><h4>Echo Nightly</h4><p>Nightly build music player with advanced audio features.</p></a>
-      <a href="https://murglar.app" target="_blank" class="app-panel"><h4>Murglar</h4><p>Streamlined media streaming for Android devices.</p></a>
-      <a href="https://aniyomi.org" target="_blank" class="app-panel"><h4>Aniyomi</h4><p>All-in-one anime + manga/manhwa viewing app.</p></a>
-      <a href="https://rave.io" target="_blank" class="app-panel"><h4>Rave</h4><p>Watch synchronized video with friends online.</p></a>
-      <a href="https://www.webvideocaster.com/home" target="_blank" class="app-panel"><h4>Web Video Caster</h4><p>Stream web videos to smart TVs and other devices.</p></a>
+      <a href="https://revanced.app" target="_blank" class="app-panel"><h4>ReVanced</h4><p>Modify apps like YouTube, Spotify, TikTok for premium features and ad removal</p></a>
+      <a href="https://wotaku.wiki/guides/music/echo#transferring-playlist" target="_blank" class="app-panel"><h4>Echo Nightly</h4><p>Music player with extensions such as YT Music, Spotify, Deezer</p></a>
+      <a href="https://murglar.app" target="_blank" class="app-panel"><h4>Murglar</h4><p>Ad-free SoundCloud music player (can't play Go+ songs)</p></a>
+      <a href="https://aniyomi.org" target="_blank" class="app-panel"><h4>Aniyomi</h4><p>All-in-one anime + manga/manhwa reader</p></a>
+      <a href="https://rave.io" target="_blank" class="app-panel"><h4>Rave</h4><p>Watch synchronized video with friends online</p></a>
+      <a href="https://www.webvideocaster.com/home" target="_blank" class="app-panel"><h4>Web Video Caster</h4><p>Stream (pirated) media from websites to TV</p></a>
     </div>
 
     <div id="android-mod" class="tab-content">
-      <a href="https://github.com/revenge-mod/revenge-bundle" target="_blank" class="app-panel"><h4>Revenge</h4><p>Theme/mod the newest versions of Discord.</p></a>
-      <a href="https://aliucord.com" target="_blank" class="app-panel"><h4>Aliucord</h4><p>Stable Discord mod that runs on older versions.</p></a>
-      <a href="https://myinsta.dev" target="_blank" class="app-panel"><h4>MyInsta</h4><p>Instagram mod that removes ads, improves privacy, and adds functionality.</p></a>
-      <a href="https://lawnchair.app" target="_blank" class="app-panel"><h4>Lawnchair</h4><p>Highly customizable Android launcher.</p></a>
+      <a href="https://github.com/revenge-mod/revenge-bundle" target="_blank" class="app-panel"><h4>Revenge</h4><p>Theme/mod the newest versions of Discord</p></a>
+      <a href="https://aliucord.com" target="_blank" class="app-panel"><h4>Aliucord</h4><p>Stable Discord mod that runs on older versions (pre-React)</p></a>
+      <a href="https://myinsta.dev" target="_blank" class="app-panel"><h4>MyInsta</h4><p>Instagram mod that removes ads, improves privacy, and adds functionality</p></a>
+      <a href="https://lawnchair.app" target="_blank" class="app-panel"><h4>Lawnchair</h4><p>Highly customizable Android launcher</p></a>
     </div>
 
     <div id="android-misc" class="tab-content">
-      <a href="https://audiorelay.net" target="_blank" class="app-panel"><h4>AudioRelay</h4><p>Stream audio from your PC to phone or other devices.</p></a>
-      <a href="https://play.google.com/store/apps/details?id=com.everydollar.android" target="_blank" class="app-panel"><h4>EveryDollar</h4><p>Budgeting app to track income and expenses.</p></a>
-      <a href="https://f-droid.org/" target="_blank" class="app-panel"><h4>F-Droid</h4><p>Open-source Android app repository.</p></a>
-      <a href="https://play.google.com/store/apps/details?id=ru.iiec.pydroid3" target="_blank" class="app-panel"><h4>Pydroid 3</h4><p>Run Python code on Android with IDE functionality.</p></a>
+      <a href="https://audiorelay.net" target="_blank" class="app-panel"><h4>AudioRelay</h4><p>Stream audio from your PC to phone or other devices</p></a>
+      <a href="https://play.google.com/store/apps/details?id=com.everydollar.android" target="_blank" class="app-panel"><h4>EveryDollar</h4><p>Freemium budgeting app to track income and expenses</p></a>
+      <a href="https://f-droid.org/" target="_blank" class="app-panel"><h4>F-Droid</h4><p>FOSS (Free+Open Source) Android app repository</p></a>
+      <a href="https://play.google.com/store/apps/details?id=ru.iiec.pydroid3" target="_blank" class="app-panel"><h4>Pydroid 3</h4><p>Run Python code on Android with IDE functionality</p></a>
     </div>
   </div>
 
@@ -248,21 +144,21 @@
     </div>
 
     <div id="windows-media" class="tab-content">
-      <a href="https://spicetify.app" target="_blank" class="app-panel"><h4>Spicetify</h4><p>Add themes, visualizers, and adblock to Spotify.</p></a>
-      <a href="https://github.com/Crunchy-DL/Crunchy-Downloader" target="_blank" class="app-panel"><h4>Crunchy-DL</h4><p>Download episodes straight from Crunchyroll.</p></a>
-      <a href="https://rezi.one/" target="_blank" class="app-panel"><h4>Rezi</h4><p>Pirated game search engine.</p></a>
-      <a href="https://isthereanydeal.com/" target="_blank" class="app-panel"><h4>ITAD</h4><p>Track PC game deals across stores.</p></a>
-      <a href="https://github.com/acidicoala/Koalageddon2#readme" target="_blank" class="app-panel"><h4>Koalageddon</h4><p>Steam DLC unlocker for owned games.</p></a>
+      <a href="https://spicetify.app" target="_blank" class="app-panel"><h4>Spicetify</h4><p>Add adblock, themes, visualizer, and more to Spotify</p></a>
+      <a href="https://github.com/Crunchy-DL/Crunchy-Downloader" target="_blank" class="app-panel"><h4>Crunchy-DL</h4><p>Download episodes straight from Crunchyroll</p></a>
+      <a href="https://rezi.one/" target="_blank" class="app-panel"><h4>Rezi</h4><p>Pirated game search engine for PC</p></a>
+      <a href="https://isthereanydeal.com/" target="_blank" class="app-panel"><h4>ITAD</h4><p>Track PC game deals across stores</p></a>
+      <a href="https://github.com/acidicoala/Koalageddon2#readme" target="_blank" class="app-panel"><h4>Koalageddon</h4><p>Steam DLC unlocker for owned games</p></a>
     </div>
 
     <div id="windows-mod" class="tab-content">
-      <a href="https://www.startallback.com" target="_blank" class="app-panel"><h4>StartAllBack</h4><p>Customize Windows Start Menu, Taskbar, and File Explorer.</p></a>
-      <a href="https://betterdiscord.app/" target="_blank" class="app-panel"><h4>BetterDiscord</h4><p>Add themes and extensions to Discord for a customized experience.</p></a>
+      <a href="https://www.startallback.com" target="_blank" class="app-panel"><h4>StartAllBack</h4><p>Customize Windows Start Menu, Taskbar, and File Explorer</p></a>
+      <a href="https://betterdiscord.app/" target="_blank" class="app-panel"><h4>BetterDiscord</h4><p>Add themes and extensions to Discord for a customized experience</p></a>
     </div>
 
     <div id="windows-misc" class="tab-content">
-      <a href="https://github.com/lllyasviel/style2paints" target="_blank" class="app-panel"><h4>Style2Paints</h4><p>AI-driven line art and sketch colorization tool.</p></a>
-      <a href="http://steamworkshop.download" target="_blank" class="app-panel"><h4>Steam Workshop Downloader</h4><p>Download workshop items from a Steam link.</p></a>
+      <a href="https://github.com/lllyasviel/style2paints" target="_blank" class="app-panel"><h4>Style2Paints</h4><p>AI-driven line art & sketch colorization tool</p></a>
+      <a href="http://steamworkshop.download" target="_blank" class="app-panel"><h4>Steam Workshop Downloader</h4><p>Download workshop items from a Steam link</p></a>
     </div>
   </div>
 
@@ -274,44 +170,48 @@
     </div>
 
     <div id="universal-apps" class="tab-content">
-      <a href="https://stremio.com" target="_blank" class="app-panel"><h4>Stremio</h4><p>Stream movies, TV shows, and more with addons and torrent integration.</p></a>
-      <a href="https://apps.kde.org/kdeconnect/" target="_blank" class="app-panel"><h4>KDE Connect</h4><p>Phone-PC integration for file transfer, notifications, and controls.</p></a>
+      <a href="https://stremio.com" target="_blank" class="app-panel"><h4>Stremio</h4><p>Stream movies/shows through torrenting or a debrid service (more info in guides)</p></a>
+      <a href="https://apps.kde.org/kdeconnect/" target="_blank" class="app-panel"><h4>KDE Connect</h4><p>Phone-PC integration for file transfer, notifications, and controls</p></a>
+      <a href="https://vivaldi.com/" target="_blank" class="app-panel"><h4>Vivaldi</h4><p>Privacy-focused web browser with extensive customization options and built-in adblock</p></a>
+      <a href="https://tailscale.com/" target="_blank" class="app-panel"><h4>Tailscale</h4><p>Link phone and PC to the same network through a local VPN</p></a>
+      <a href="https://proton.me/" target="_blank" class="app-panel"><h4>Proton</h4><p>Privacy-oriented email, free VPN, and cloud services</p></a>
     </div>
 
     <div id="universal-websites" class="tab-content">
-      <a href="https://vimm.net/" target="_blank" class="app-panel"><h4>Vimm's Lair</h4><p>Download classic console ROMs for emulation.</p></a>
-      <a href="https://fmhy.net/" target="_blank" class="app-panel"><h4>FMHY</h4><p>Huge list of trusted sites for pirating & modifying apps.</p></a>
-      <a href="https://psychonautwiki.org/" target="_blank" class="app-panel"><h4>PsychonautWiki</h4><p>Comprehensive resource for psychedelic research, substances, and culture.</p></a>
+      <a href="https://chat.openai.com/" target="_blank" class="app-panel"><h4>ChatGPT</h4><p>AI chatbot for productivity, coding help, and general queries (this site was made with it!)</p></a>
+      <a href="https://vimm.net/" target="_blank" class="app-panel"><h4>Vimm's Lair</h4><p>Download classic console ROMs for emulation</p></a>
+      <a href="https://fmhy.net/" target="_blank" class="app-panel"><h4>FMHY</h4><p>Huge list of trusted sites for pirating & modifying apps</p></a>
+      <a href="https://psychonautwiki.org/" target="_blank" class="app-panel"><h4>PsychonautWiki</h4><p>Comprehensive resource for psychedelic research, substances, culture, dosage info, and more</p></a>
+      <a href="https://torbox.net/" target="_blank" class="app-panel"><h4>TorBox</h4><p>Debrid service for streaming and torrenting media. Comes with free plan as well (more info in guides)</p></a>
     </div>
   </div>
 
-  <div class="planned-dropdown">
-    <button class="planned-btn" onclick="togglePlanned()">Planned Additions ▼</button>
-    <div class="planned-list" id="plannedList">
-      <p>PsychonautWiki</p>
-      <p>FMHY</p>
+  <!-- Guides Content -->
+  <div id="guides" class="device-tab-content">
+    <a href="#" class="back-button" onclick="showDeviceTabById('android')">⬅ Back to Main List</a>
+    <div class="tab-content active">
+      <a href="https://wotaku.wiki/guides/music/echo" target="_blank" class="app-panel"><h4>Echo Nightly Guide</h4><p>Learn how to install all extensions available and set up Echo</p></a>
+      <a href="https://stremio.com/guides" target="_blank" class="app-panel"><h4>Stremio Guide</h4><p>Get help setting up Stremio, optionally with a debrid service or torrenting (and why u should/shouldnt do those things)</p></a>
+      <a href="https://aniyomi.org/guides" target="_blank" class="app-panel"><h4>Aniyomi Guide</h4><p>Guide to install the reopsitories needed to download sources</p></a>
     </div>
   </div>
+
+  <div class="discord-msg">Add me on Discord <strong>illuminaex</strong> to send me anything I should add or to get help with anything.</div>
 </main>
 
-<footer>
-  <p>Made with ❤️ by Dani</p>
-</footer>
+<footer>Made with ❤️ by Dani</footer>
 
 <script>
-  function showDeviceTab(event, deviceId) {
-    document.querySelectorAll('.device-tab-content').forEach(tab => {
-      tab.classList.remove('active');
-      tab.querySelectorAll('.tab-content').forEach(section => section.classList.remove('active'));
-      tab.querySelectorAll('.section-tab-button').forEach(btn => btn.classList.remove('active'));
-    });
+  function showDeviceTab(event, tabId) {
+    document.querySelectorAll('.device-tab-content').forEach(tab => tab.classList.remove('active'));
     document.querySelectorAll('.device-tab-button').forEach(btn => btn.classList.remove('active'));
-    const selectedDevice = document.getElementById(deviceId);
-    selectedDevice.classList.add('active');
-    event.currentTarget.classList.add('active');
-    const firstSectionBtn = selectedDevice.querySelector('.section-tab-button');
-    if(firstSectionBtn) firstSectionBtn.click();
+    document.getElementById(tabId).classList.add('active');
+    if(event) event.currentTarget.classList.add('active');
+    // activate first section tab if exists
+    const firstSection = document.querySelector('#' + tabId + ' .section-tab-button');
+    if(firstSection) firstSection.click();
   }
+  function showDeviceTabById(tabId) { showDeviceTab(null, tabId); }
 
   function showSectionTab(event, sectionId) {
     const container = event.currentTarget.closest('.device-tab-content');
@@ -323,18 +223,12 @@
 
   document.querySelectorAll('.device-tab-button.active')[0].click();
 
-  function togglePlanned() {
-    document.getElementById('plannedList').classList.toggle('show');
-  }
-
   window.addEventListener('scroll', function() {
     const header = document.querySelector('header');
-    if (window.scrollY > 50) {
-      header.classList.add('scrolled');
-    } else {
-      header.classList.remove('scrolled');
-    }
+    if (window.scrollY > 50) header.classList.add('scrolled');
+    else header.classList.remove('scrolled');
   });
 </script>
+
 </body>
 </html>
