@@ -1,355 +1,300 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cool Resources</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #2c2c2c;
-      color: #e0d9f0;
-      margin: 0;
-      padding: 0;
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cool Resources</title>
+<style>
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    color: #e0d9f0;
+    line-height: 1.6;
+    overflow-x: hidden;
+    background: radial-gradient(ellipse at bottom, #69354a 0%, #5f3569 50%, #69353d 100%);
+    background-attachment: fixed;
+  }
+  body::before {
+    content: "";
+    position: fixed;
+    top:0; left:0;
+    width:100%; height:100%;
+    background: transparent url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="2" height="2"><circle cx="1" cy="1" r="1" fill="white" /></svg>') repeat;
+    opacity: 0.05;
+    pointer-events: none;
+  }
 
-    header {
-      background: linear-gradient(135deg, rgba(176,102,255,0.7), rgba(107,0,255,0.6));
-      backdrop-filter: blur(15px);
-      padding: 3rem 1rem;
-      text-align: center;
-      border-bottom: 2px solid #6a0dad;
-      box-shadow: 0 4px 20px rgba(107,0,255,0.4);
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
+  header {
+    background: linear-gradient(135deg, rgba(176,102,255,0.7), rgba(107,0,255,0.6));
+    backdrop-filter: blur(15px);
+    padding: 3rem 1rem;
+    text-align: center;
+    border-bottom: 2px solid #6a0dad;
+    box-shadow: 0 4px 20px rgba(107,0,255,0.4);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    color: #fff;
+    text-shadow: 1px 1px 5px #4b0073;
+  }
+  main {
+    max-width: 1000px;
+    margin: auto;
+    padding: 2rem;
+    flex: 1;
+  }
 
-    header h1 {
-      margin: 0;
-      font-size: 2.5rem;
-      color: #fff;
-      text-shadow: 1px 1px 5px #4b0073;
-    }
+  /* Device Tabs */
+  .device-tabs {
+    display: flex;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .device-tab-button {
+    background: rgba(58, 42, 74, 0.7);
+    border: none;
+    padding: 0.8rem 1.5rem;
+    margin: 0 0.5rem;
+    cursor: pointer;
+    color: #e0d9f0;
+    font-size: 1rem;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 10px rgba(107,0,255,0.3);
+  }
+  .device-tab-button:hover {
+    background: rgba(107,0,255,0.6);
+    transform: translateY(-2px) scale(1.03);
+  }
+  .device-tab-button.active {
+    background: rgba(176,102,255,0.8);
+    color: #2c2c2c;
+    box-shadow: 0 0 15px #b066ff, 0 0 30px rgba(176,102,255,0.5);
+  }
 
-    main {
-      max-width: 1000px;
-      margin: auto;
-      padding: 2rem;
-    }
+  /* Section Tabs - pill style */
+  .section-tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+    background: rgba(75, 51, 128, 0.5);
+    border-radius: 50px;
+    padding: 5px;
+    gap: 5px;
+  }
+  .section-tab-button {
+    border: none;
+    padding: 0.8rem 1.5rem;
+    background: transparent;
+    color: #e0d9f0;
+    font-size: 1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex: 1;
+    text-align: center;
+  }
+  .section-tab-button:hover {
+    background: rgba(107,0,255,0.6);
+  }
+  .section-tab-button.active {
+    background: #b066ff;
+    color: #2c2c2c;
+    box-shadow: 0 0 10px #b066ff, 0 0 20px rgba(176,102,255,0.4);
+  }
 
-    /* Device Tabs */
-    .device-tabs {
-      display: flex;
-      margin-bottom: 1rem;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
+  .tab-content {
+    display: none;
+    animation: fadeSlide 0.4s ease forwards;
+  }
+  .tab-content.active {
+    display: block;
+  }
+  @keyframes fadeSlide {
+    0% {opacity: 0; transform: translateY(10px);}
+    100% {opacity: 1; transform: translateY(0);}
+  }
 
-    .device-tab-button {
-      background: rgba(58, 42, 74, 0.7);
-      border: none;
-      padding: 0.8rem 1.5rem;
-      margin: 0 0.5rem;
-      cursor: pointer;
-      color: #e0d9f0;
-      font-size: 1rem;
-      border-radius: 12px;
-      transition: all 0.3s ease;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 2px 10px rgba(107,0,255,0.3);
-    }
+  .app-panel {
+    background: rgba(58, 42, 74, 0.6);
+    border-left: 5px solid #b066ff;
+    padding: 1rem 1.2rem;
+    margin: 0.75rem 0;
+    border-radius: 16px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 4px 15px rgba(107,0,255,0.2);
+  }
+  .app-panel:hover {
+    background: rgba(75, 51, 128, 0.7);
+    transform: translateX(6px) scale(1.02);
+    box-shadow: 0 0 20px #b066ff, 0 0 30px rgba(176,102,255,0.4);
+  }
+  .app-panel h4 { margin: 0; color: #e0c3ff; font-size: 1.1rem; }
+  .app-panel p { margin: 0.3rem 0 0 0; font-size: 0.95rem; color: #d0c0ff; }
 
-    .device-tab-button:hover {
-      background: rgba(107,0,255,0.6);
-      transform: translateY(-2px) scale(1.03);
-    }
+  footer {
+    text-align: center;
+    padding: 1.5rem;
+    border-top: 2px solid #6a0dad;
+    font-size: 0.9rem;
+    color: #c5b3e6;
+    background: #2c2c2c;
+  }
 
-    .device-tab-button.active {
-      background: rgba(176,102,255,0.8);
-      color: #2c2c2c;
-      box-shadow: 0 0 15px #b066ff, 0 0 30px rgba(176,102,255,0.5);
-    }
+  .device-tab-content { display: none; }
+  .device-tab-content.active { display: block; }
 
-    /* Section Tabs */
-    .section-tabs {
-      display: flex;
-      margin-bottom: 1rem;
-      flex-wrap: wrap;
-      justify-content: flex-start;
-    }
+  .planned-dropdown { margin-top: 2rem; text-align: center; }
+  .planned-btn {
+    background: rgba(107,0,255,0.6);
+    color: #fff;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    cursor: pointer;
+    border-radius: 12px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+  }
+  .planned-btn:hover { background: rgba(176,102,255,0.7); }
+  .planned-list { margin-top: 0.5rem; display: none; color: #d0c0ff; }
+  .planned-list.show { display: block; }
 
-    .section-tab-button {
-      background: rgba(58, 42, 74, 0.5);
-      border: none;
-      padding: 0.6rem 1.2rem;
-      margin: 0 0.5rem 0.5rem 0;
-      cursor: pointer;
-      color: #e0d9f0;
-      font-size: 0.95rem;
-      border-radius: 10px;
-      transition: all 0.3s ease;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 2px 8px rgba(107,0,255,0.3);
-    }
-
-    .section-tab-button:hover {
-      background: rgba(107,0,255,0.5);
-      transform: translateY(-1px) scale(1.02);
-    }
-
-    .section-tab-button.active {
-      background: rgba(176,102,255,0.6);
-      color: #2c2c2c;
-      box-shadow: 0 0 12px #b066ff, 0 0 20px rgba(176,102,255,0.4);
-    }
-
-    /* Tab content */
-    .tab-content {
-      display: none;
-      animation: fadeSlide 0.4s ease forwards;
-    }
-
-    .tab-content.active {
-      display: block;
-    }
-
-    @keyframes fadeSlide {
-      0% {opacity: 0; transform: translateY(10px);}
-      100% {opacity: 1; transform: translateY(0);}
-    }
-
-    /* App panels */
-    .app-panel {
-      background: rgba(58, 42, 74, 0.6);
-      border-left: 5px solid #b066ff;
-      padding: 1rem 1.2rem;
-      margin: 0.75rem 0;
-      border-radius: 16px;
-      transition: all 0.3s ease;
-      cursor: pointer;
-      text-decoration: none;
-      color: inherit;
-      display: block;
-      backdrop-filter: blur(12px);
-      box-shadow: 0 4px 15px rgba(107,0,255,0.2);
-    }
-
-    .app-panel:hover {
-      background: rgba(75, 51, 128, 0.7);
-      transform: translateX(6px) scale(1.02);
-      box-shadow: 0 0 20px #b066ff, 0 0 30px rgba(176,102,255,0.4);
-    }
-
-    .app-panel h4 {
-      margin: 0;
-      color: #e0c3ff;
-      font-size: 1.1rem;
-    }
-
-    .app-panel p {
-      margin: 0.3rem 0 0 0;
-      font-size: 0.95rem;
-      color: #d0c0ff;
-    }
-
-    footer {
-      text-align: center;
-      padding: 1.5rem;
-      border-top: 2px solid #6a0dad;
-      margin-top: 3rem;
-      font-size: 0.9rem;
-      color: #c5b3e6;
-    }
-
-    /* Hide all device content by default */
-    .device-tab-content {
-      display: none;
-    }
-
-    .device-tab-content.active {
-      display: block;
-    }
-  </style>
+</style>
 </head>
 <body>
-  <header>
-    <h1>Cool Resources I've Found Over the Years</h1>
-  </header>
+<header>
+  <h1>Cool Resources I've Found Over the Years</h1>
+</header>
 
-  <main>
-    <!-- Device Tabs -->
-    <div class="device-tabs">
-      <button class="device-tab-button active" onclick="showDeviceTab(event, 'android')">Android</button>
-      <button class="device-tab-button" onclick="showDeviceTab(event, 'windows')">Windows</button>
+<main>
+  <div class="device-tabs">
+    <button class="device-tab-button active" onclick="showDeviceTab(event, 'android')">Android</button>
+    <button class="device-tab-button" onclick="showDeviceTab(event, 'windows')">Windows</button>
+  </div>
+
+  <!-- Android Content -->
+  <div id="android" class="device-tab-content">
+    <div class="section-tabs">
+      <button class="section-tab-button" onclick="showSectionTab(event,'android-media')">Media</button>
+      <button class="section-tab-button" onclick="showSectionTab(event,'android-mod')">Modifications</button>
+      <button class="section-tab-button" onclick="showSectionTab(event,'android-misc')">Misc</button>
     </div>
 
-    <!-- Android Content -->
-    <div id="android" class="device-tab-content">
-      <div class="section-tabs">
-        <button class="section-tab-button" onclick="showSectionTab(event, 'android-media')">Media / Entertainment</button>
-        <button class="section-tab-button" onclick="showSectionTab(event, 'android-mod')">Modifications</button>
-        <button class="section-tab-button" onclick="showSectionTab(event, 'android-misc')">Miscellaneous</button>
-      </div>
-
-      <div id="android-media" class="tab-content">
-        <a href="#" class="app-panel">
-          <h4>ReVanced</h4>
-          <p>Modify apps like YouTube, Spotify, TikTok for premium features and ad removal.</p>
-        </a>
-        <a href="#" class="app-panel">
-          <h4>Aniyomi</h4>
-          <p>All-in-one anime + manga/manhwa viewing app.</p>
-        </a>
-        <a href="#" class="app-panel">
-          <h4>Stremio</h4>
-          <p>Stream movies, TV shows, and more with addons and torrent integration.</p>
-        </a>
-      </div>
-
-      <div id="android-mod" class="tab-content">
-        <a href="#" class="app-panel">
-          <h4>xManager</h4>
-          <p>Pre-patched releases of Spotify ReVanced.</p>
-        </a>
-        <a href="#" class="app-panel">
-          <h4>MyInsta</h4>
-          <p>Instagram mod that removes ads, improves privacy, and adds functionality.</p>
-        </a>
-      </div>
-
-      <div id="android-misc" class="tab-content">
-        <a href="#" class="app-panel">
-          <h4>AudioRelay</h4>
-          <p>Stream audio from your PC to phone or other devices.</p>
-        </a>
-        <a href="#" class="app-panel">
-          <h4>Iriun Webcam</h4>
-          <p>Turn your phone into a wireless webcam for PC.</p>
-        </a>
-        <a href="#" class="app-panel">
-          <h4>KDE Connect</h4>
-          <p>Phone-PC integration for file transfer, notifications, and controls.</p>
-        </a>
-        <a href="#" class="app-panel">
-          <h4>Lemuroid</h4>
-          <p>Retro gaming emulator for Android devices.</p>
-        </a>
-      </div>
+    <div id="android-media" class="tab-content">
+      <a href="#" class="app-panel"><h4>ReVanced</h4><p>Modify apps like YouTube, Spotify, TikTok for premium features and ad removal.</p></a>
+      <a href="#" class="app-panel"><h4>Echo Nightly</h4><p>Nightly build music player with advanced audio features.</p></a>
+      <a href="#" class="app-panel"><h4>Murglar</h4><p>Streamlined media streaming for Android devices.</p></a>
+      <a href="#" class="app-panel"><h4>Aniyomi</h4><p>All-in-one anime + manga/manhwa viewing app.</p></a>
+      <a href="#" class="app-panel"><h4>Stremio</h4><p>Stream movies, TV shows, and more with addons and torrent integration.</p></a>
+      <a href="#" class="app-panel"><h4>Rave</h4><p>Watch synchronized video with friends online.</p></a>
+      <a href="#" class="app-panel"><h4>Web Video Caster</h4><p>Stream web videos to smart TVs and other devices.</p></a>
+      <a href="#" class="app-panel"><h4>Lemuroid</h4><p>Retro gaming emulator for Android devices.</p></a>
+      <a href="#" class="app-panel"><h4>Vimm's Lair</h4><p>Download classic console ROMs for emulation.</p></a>
     </div>
 
-    <!-- Windows Content -->
-    <div id="windows" class="device-tab-content">
-      <div class="section-tabs">
-        <button class="section-tab-button" onclick="showSectionTab(event, 'windows-media')">Media / Entertainment</button>
-        <button class="section-tab-button" onclick="showSectionTab(event, 'windows-mod')">Modifications</button>
-        <button class="section-tab-button" onclick="showSectionTab(event, 'windows-misc')">Miscellaneous</button>
-      </div>
-
-      <div id="windows-media" class="tab-content">
-        <a href="#" class="app-panel">
-          <h4>Spicetify</h4>
-          <p>Add themes, visualizers, and adblock to Spotify.</p>
-        </a>
-        <a href="#" class="app-panel">
-          <h4>CrunchyDL</h4>
-          <p>Download episodes straight from Crunchyroll.</p>
-        </a>
-        <a href="#" class="app-panel">
-          <h4>Steam Workshop Downloader</h4>
-          <p>Download workshop items from a Steam link.</p>
-        </a>
-        <a href="#" class="app-panel">
-          <h4>BetterDiscord</h4>
-          <p>Add themes and extensions to Discord for a customized experience.</p>
-        </a>
-      </div>
-
-      <div id="windows-mod" class="tab-content">
-        <a href="#" class="app-panel">
-          <h4>StartAllBack</h4>
-          <p>Customize Windows Start Menu, Taskbar, and File Explorer.</p>
-        </a>
-        <a href="#" class="app-panel">
-          <h4>Style2Paints</h4>
-          <p>AI-driven line art and sketch colorization tool.</p>
-        </a>
-        <a href="#" class="app-panel">
-          <h4>Pydroid</h4>
-          <p>Run Python code on Android with IDE functionality.</p>
-        </a>
-        <a href="#" class="app-panel">
-          <h4>Tailscale</h4>
-          <p>Secure networking tool for VPN-like connectivity.</p>
-        </a>
-      </div>
-
-      <div id="windows-misc" class="tab-content">
-        <a href="#" class="app-panel">
-          <h4>Brave / Vivaldi</h4>
-          <p>Privacy-first browsers with custom features and extensions.</p>
-        </a>
-        <a href="#" class="app-panel">
-          <h4>Proton</h4>
-          <p>Secure services including email, VPN, and more.</p>
-        </a>
-        <a href="#" class="app-panel">
-          <h4>IsThereAnyDeal</h4>
-          <p>Track PC game deals across stores.</p>
-        </a>
-        <a href="#" class="app-panel">
-          <h4>Koalageddon</h4>
-          <p>Steam DLC unlocker for owned games.</p>
-        </a>
-        <a href="#" class="app-panel">
-          <h4>FMHY</h4>
-          <p>Huge list of trusted sites for pirating & modifying apps.</p>
-        </a>
-        <a href="#" class="app-panel">
-          <h4>Rezi</h4>
-          <p>Pirated game search engine.</p>
-        </a>
-      </div>
+    <div id="android-mod" class="tab-content">
+      <a href="#" class="app-panel"><h4>Revenge</h4><p>Theme/mod the newest versions of Discord.</p></a>
+      <a href="#" class="app-panel"><h4>Aliucord</h4><p>Stable Discord mod that runs on older versions.</p></a>
+      <a href="#" class="app-panel"><h4>MyInsta</h4><p>Instagram mod that removes ads, improves privacy, and adds functionality.</p></a>
+      <a href="#" class="app-panel"><h4>Lawnchair</h4><p>Highly customizable Android launcher.</p></a>
     </div>
-  </main>
 
-  <footer>
-    <p>Made with ❤️ by Dani</p>
-  </footer>
+    <div id="android-misc" class="tab-content">
+      <a href="#" class="app-panel"><h4>AudioRelay</h4><p>Stream audio from your PC to phone or other devices.</p></a>
+      <a href="#" class="app-panel"><h4>EveryDollar</h4><p>Budgeting app to track income and expenses.</p></a>
+      <a href="#" class="app-panel"><h4>F-Droid</h4><p>Open-source Android app repository.</p></a>
+      <a href="#" class="app-panel"><h4>Iriun Webcam</h4><p>Turn your phone into a wireless webcam for PC.</p></a>
+      <a href="#" class="app-panel"><h4>KDE Connect</h4><p>Phone-PC integration for file transfer, notifications, and controls.</p></a>
+      <a href="#" class="app-panel"><h4>Pydroid</h4><p>Run Python code on Android with IDE functionality.</p></a>
+    </div>
+  </div>
 
-  <script>
-    function showDeviceTab(event, deviceId) {
-      // Hide all devices + all section contents
-      document.querySelectorAll('.device-tab-content').forEach(tab => {
-        tab.classList.remove('active');
-        tab.querySelectorAll('.tab-content').forEach(section => section.classList.remove('active'));
-        tab.querySelectorAll('.section-tab-button').forEach(btn => btn.classList.remove('active'));
-      });
+  <!-- Windows Content -->
+  <div id="windows" class="device-tab-content">
+    <div class="section-tabs">
+      <button class="section-tab-button" onclick="showSectionTab(event,'windows-media')">Media</button>
+      <button class="section-tab-button" onclick="showSectionTab(event,'windows-mod')">Modifications</button>
+      <button class="section-tab-button" onclick="showSectionTab(event,'windows-misc')">Misc</button>
+    </div>
 
-      // Remove active class from all device buttons
-      document.querySelectorAll('.device-tab-button').forEach(btn => btn.classList.remove('active'));
+    <div id="windows-media" class="tab-content">
+      <a href="#" class="app-panel"><h4>Spicetify</h4><p>Add themes, visualizers, and adblock to Spotify.</p></a>
+      <a href="#" class="app-panel"><h4>Crunchy-DL</h4><p>Download episodes straight from Crunchyroll.</p></a>
+      <a href="#" class="app-panel"><h4>Rezi</h4><p>Pirated game search engine.</p></a>
+      <a href="#" class="app-panel"><h4>ITAD</h4><p>Track PC game deals across stores.</p></a>
+      <a href="#" class="app-panel"><h4>Koalageddon</h4><p>Steam DLC unlocker for owned games.</p></a>
+    </div>
 
-      // Show selected device
-      const selectedDevice = document.getElementById(deviceId);
-      selectedDevice.classList.add('active');
-      event.currentTarget.classList.add('active');
+    <div id="windows-mod" class="tab-content">
+      <a href="#" class="app-panel"><h4>StartAllBack</h4><p>Customize Windows Start Menu, Taskbar, and File Explorer.</p></a>
+      <a href="#" class="app-panel"><h4>BetterDiscord</h4><p>Add themes and extensions to Discord for a customized experience.</p></a>
+    </div>
 
-      // Show first section tab of selected device
-      const firstSectionBtn = selectedDevice.querySelector('.section-tab-button');
-      if(firstSectionBtn) firstSectionBtn.click();
-    }
+    <div id="windows-misc" class="tab-content">
+      <a href="#" class="app-panel"><h4>Style2Paints</h4><p>AI-driven line art and sketch colorization tool.</p></a>
+      <a href="#" class="app-panel"><h4>Steam Workshop Downloader</h4><p>Download workshop items from a Steam link.</p></a>
+    </div>
+  </div>
 
-    function showSectionTab(event, sectionId) {
-      const container = event.currentTarget.closest('.device-tab-content');
-      container.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
-      container.querySelectorAll('.section-tab-button').forEach(btn => btn.classList.remove('active'));
-      document.getElementById(sectionId).classList.add('active');
-      event.currentTarget.classList.add('active');
-    }
+  <div class="planned-dropdown">
+    <button class="planned-btn" onclick="togglePlanned()">Planned Additions ▼</button>
+    <div class="planned-list" id="plannedList">
+      <p>PsychonautWiki</p>
+      <p>FMHY</p>
+    </div>
+  </div>
+</main>
 
-    // Initialize first device tab
-    document.querySelectorAll('.device-tab-button.active')[0].click();
-  </script>
+<footer>
+  <p>Made with ❤️ by Dani</p>
+</footer>
+
+<script>
+  function showDeviceTab(event, deviceId) {
+    document.querySelectorAll('.device-tab-content').forEach(tab => {
+      tab.classList.remove('active');
+      tab.querySelectorAll('.tab-content').forEach(section => section.classList.remove('active'));
+      tab.querySelectorAll('.section-tab-button').forEach(btn => btn.classList.remove('active'));
+    });
+    document.querySelectorAll('.device-tab-button').forEach(btn => btn.classList.remove('active'));
+    const selectedDevice = document.getElementById(deviceId);
+    selectedDevice.classList.add('active');
+    event.currentTarget.classList.add('active');
+    const firstSectionBtn = selectedDevice.querySelector('.section-tab-button');
+    if(firstSectionBtn) firstSectionBtn.click();
+  }
+
+  function showSectionTab(event, sectionId) {
+    const container = event.currentTarget.closest('.device-tab-content');
+    container.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+    container.querySelectorAll('.section-tab-button').forEach(btn => btn.classList.remove('active'));
+    document.getElementById(sectionId).classList.add('active');
+    event.currentTarget.classList.add('active');
+  }
+
+  document.querySelectorAll('.device-tab-button.active')[0].click();
+
+  function togglePlanned() {
+    document.getElementById('plannedList').classList.toggle('show');
+  }
+</script>
 </body>
 </html>
