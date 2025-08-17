@@ -32,8 +32,7 @@
   }
 
   header {
-    background: linear-gradient(135deg, rgba(176,102,255,0.7), rgba(107,0,255,0.6));
-    backdrop-filter: blur(15px);
+    background: radial-gradient(ellipse at bottom, #69354a 0%, #5f3569 50%, #69353d 100%);
     padding: 3rem 1rem;
     text-align: center;
     border-bottom: 2px solid #6a0dad;
@@ -41,6 +40,11 @@
     position: sticky;
     top: 0;
     z-index: 10;
+    transition: border-bottom 0.4s ease, padding 0.4s ease;
+  }
+  header.scrolled {
+    border-bottom: 0 solid transparent;
+    padding: 2rem 1rem;
   }
   header h1 {
     margin: 0;
@@ -61,19 +65,20 @@
     margin-bottom: 1rem;
     flex-wrap: wrap;
     justify-content: center;
+    gap: 10px;
   }
   .device-tab-button {
     background: rgba(58, 42, 74, 0.7);
     border: none;
     padding: 0.8rem 1.5rem;
-    margin: 0 0.5rem;
     cursor: pointer;
     color: #e0d9f0;
     font-size: 1rem;
     border-radius: 12px;
-    transition: all 0.3s ease;
+    transition: all 0.4s ease;
     backdrop-filter: blur(10px);
     box-shadow: 0 2px 10px rgba(107,0,255,0.3);
+    position: relative;
   }
   .device-tab-button:hover {
     background: rgba(107,0,255,0.6);
@@ -103,26 +108,36 @@
     font-size: 1rem;
     border-radius: 50px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.4s ease;
     flex: 1;
     text-align: center;
+    position: relative;
   }
-  .section-tab-button:hover {
-    background: rgba(107,0,255,0.6);
-  }
-  .section-tab-button.active {
+  .section-tab-button:hover { background: rgba(107,0,255,0.6); }
+
+  /* Underline animation for section tabs */
+  .section-tab-button::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0%;
+    height: 3px;
     background: #b066ff;
-    color: #2c2c2c;
-    box-shadow: 0 0 10px #b066ff, 0 0 20px rgba(176,102,255,0.4);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+  }
+  .section-tab-button:hover::after,
+  .section-tab-button.active::after {
+    width: 80%;
   }
 
   .tab-content {
     display: none;
     animation: fadeSlide 0.4s ease forwards;
   }
-  .tab-content.active {
-    display: block;
-  }
+  .tab-content.active { display: block; }
   @keyframes fadeSlide {
     0% {opacity: 0; transform: translateY(10px);}
     100% {opacity: 1; transform: translateY(0);}
@@ -180,77 +195,93 @@
 </style>
 </head>
 <body>
+
 <header>
-  <h1>Cool Resources I've Found Over the Years</h1>
+  <h1>Dani's List of Apps & Resources</h1>
 </header>
 
 <main>
   <div class="device-tabs">
     <button class="device-tab-button active" onclick="showDeviceTab(event, 'android')">Android</button>
     <button class="device-tab-button" onclick="showDeviceTab(event, 'windows')">Windows</button>
+    <button class="device-tab-button" onclick="showDeviceTab(event, 'universal')">Universal</button>
   </div>
 
   <!-- Android Content -->
   <div id="android" class="device-tab-content">
     <div class="section-tabs">
-      <button class="section-tab-button" onclick="showSectionTab(event,'android-media')">Media</button>
+      <button class="section-tab-button active" onclick="showSectionTab(event,'android-media')">Media</button>
       <button class="section-tab-button" onclick="showSectionTab(event,'android-mod')">Modifications</button>
       <button class="section-tab-button" onclick="showSectionTab(event,'android-misc')">Misc</button>
     </div>
 
     <div id="android-media" class="tab-content">
-      <a href="#" class="app-panel"><h4>ReVanced</h4><p>Modify apps like YouTube, Spotify, TikTok for premium features and ad removal.</p></a>
-      <a href="#" class="app-panel"><h4>Echo Nightly</h4><p>Nightly build music player with advanced audio features.</p></a>
-      <a href="#" class="app-panel"><h4>Murglar</h4><p>Streamlined media streaming for Android devices.</p></a>
-      <a href="#" class="app-panel"><h4>Aniyomi</h4><p>All-in-one anime + manga/manhwa viewing app.</p></a>
-      <a href="#" class="app-panel"><h4>Stremio</h4><p>Stream movies, TV shows, and more with addons and torrent integration.</p></a>
-      <a href="#" class="app-panel"><h4>Rave</h4><p>Watch synchronized video with friends online.</p></a>
-      <a href="#" class="app-panel"><h4>Web Video Caster</h4><p>Stream web videos to smart TVs and other devices.</p></a>
-      <a href="#" class="app-panel"><h4>Lemuroid</h4><p>Retro gaming emulator for Android devices.</p></a>
-      <a href="#" class="app-panel"><h4>Vimm's Lair</h4><p>Download classic console ROMs for emulation.</p></a>
+      <a href="https://revanced.app" target="_blank" class="app-panel"><h4>ReVanced</h4><p>Modify apps like YouTube, Spotify, TikTok for premium features and ad removal.</p></a>
+      <a href="https://wotaku.wiki/guides/music/echo#transferring-playlist" target="_blank" class="app-panel"><h4>Echo Nightly</h4><p>Nightly build music player with advanced audio features.</p></a>
+      <a href="https://murglar.app" target="_blank" class="app-panel"><h4>Murglar</h4><p>Streamlined media streaming for Android devices.</p></a>
+      <a href="https://aniyomi.org" target="_blank" class="app-panel"><h4>Aniyomi</h4><p>All-in-one anime + manga/manhwa viewing app.</p></a>
+      <a href="https://rave.io" target="_blank" class="app-panel"><h4>Rave</h4><p>Watch synchronized video with friends online.</p></a>
+      <a href="https://www.webvideocaster.com/home" target="_blank" class="app-panel"><h4>Web Video Caster</h4><p>Stream web videos to smart TVs and other devices.</p></a>
     </div>
 
     <div id="android-mod" class="tab-content">
-      <a href="#" class="app-panel"><h4>Revenge</h4><p>Theme/mod the newest versions of Discord.</p></a>
-      <a href="#" class="app-panel"><h4>Aliucord</h4><p>Stable Discord mod that runs on older versions.</p></a>
-      <a href="#" class="app-panel"><h4>MyInsta</h4><p>Instagram mod that removes ads, improves privacy, and adds functionality.</p></a>
-      <a href="#" class="app-panel"><h4>Lawnchair</h4><p>Highly customizable Android launcher.</p></a>
+      <a href="https://github.com/revenge-mod/revenge-bundle" target="_blank" class="app-panel"><h4>Revenge</h4><p>Theme/mod the newest versions of Discord.</p></a>
+      <a href="https://aliucord.com" target="_blank" class="app-panel"><h4>Aliucord</h4><p>Stable Discord mod that runs on older versions.</p></a>
+      <a href="https://myinsta.dev" target="_blank" class="app-panel"><h4>MyInsta</h4><p>Instagram mod that removes ads, improves privacy, and adds functionality.</p></a>
+      <a href="https://lawnchair.app" target="_blank" class="app-panel"><h4>Lawnchair</h4><p>Highly customizable Android launcher.</p></a>
     </div>
 
     <div id="android-misc" class="tab-content">
-      <a href="#" class="app-panel"><h4>AudioRelay</h4><p>Stream audio from your PC to phone or other devices.</p></a>
-      <a href="#" class="app-panel"><h4>EveryDollar</h4><p>Budgeting app to track income and expenses.</p></a>
-      <a href="#" class="app-panel"><h4>F-Droid</h4><p>Open-source Android app repository.</p></a>
-      <a href="#" class="app-panel"><h4>Iriun Webcam</h4><p>Turn your phone into a wireless webcam for PC.</p></a>
-      <a href="#" class="app-panel"><h4>KDE Connect</h4><p>Phone-PC integration for file transfer, notifications, and controls.</p></a>
-      <a href="#" class="app-panel"><h4>Pydroid</h4><p>Run Python code on Android with IDE functionality.</p></a>
+      <a href="https://audiorelay.net" target="_blank" class="app-panel"><h4>AudioRelay</h4><p>Stream audio from your PC to phone or other devices.</p></a>
+      <a href="https://play.google.com/store/apps/details?id=com.everydollar.android" target="_blank" class="app-panel"><h4>EveryDollar</h4><p>Budgeting app to track income and expenses.</p></a>
+      <a href="https://f-droid.org/" target="_blank" class="app-panel"><h4>F-Droid</h4><p>Open-source Android app repository.</p></a>
+      <a href="https://play.google.com/store/apps/details?id=ru.iiec.pydroid3" target="_blank" class="app-panel"><h4>Pydroid 3</h4><p>Run Python code on Android with IDE functionality.</p></a>
     </div>
   </div>
 
   <!-- Windows Content -->
   <div id="windows" class="device-tab-content">
     <div class="section-tabs">
-      <button class="section-tab-button" onclick="showSectionTab(event,'windows-media')">Media</button>
+      <button class="section-tab-button active" onclick="showSectionTab(event,'windows-media')">Media</button>
       <button class="section-tab-button" onclick="showSectionTab(event,'windows-mod')">Modifications</button>
       <button class="section-tab-button" onclick="showSectionTab(event,'windows-misc')">Misc</button>
     </div>
 
     <div id="windows-media" class="tab-content">
-      <a href="#" class="app-panel"><h4>Spicetify</h4><p>Add themes, visualizers, and adblock to Spotify.</p></a>
-      <a href="#" class="app-panel"><h4>Crunchy-DL</h4><p>Download episodes straight from Crunchyroll.</p></a>
-      <a href="#" class="app-panel"><h4>Rezi</h4><p>Pirated game search engine.</p></a>
-      <a href="#" class="app-panel"><h4>ITAD</h4><p>Track PC game deals across stores.</p></a>
-      <a href="#" class="app-panel"><h4>Koalageddon</h4><p>Steam DLC unlocker for owned games.</p></a>
+      <a href="https://spicetify.app" target="_blank" class="app-panel"><h4>Spicetify</h4><p>Add themes, visualizers, and adblock to Spotify.</p></a>
+      <a href="https://github.com/Crunchy-DL/Crunchy-Downloader" target="_blank" class="app-panel"><h4>Crunchy-DL</h4><p>Download episodes straight from Crunchyroll.</p></a>
+      <a href="https://rezi.one/" target="_blank" class="app-panel"><h4>Rezi</h4><p>Pirated game search engine.</p></a>
+      <a href="https://isthereanydeal.com/" target="_blank" class="app-panel"><h4>ITAD</h4><p>Track PC game deals across stores.</p></a>
+      <a href="https://github.com/acidicoala/Koalageddon2#readme" target="_blank" class="app-panel"><h4>Koalageddon</h4><p>Steam DLC unlocker for owned games.</p></a>
     </div>
 
     <div id="windows-mod" class="tab-content">
-      <a href="#" class="app-panel"><h4>StartAllBack</h4><p>Customize Windows Start Menu, Taskbar, and File Explorer.</p></a>
-      <a href="#" class="app-panel"><h4>BetterDiscord</h4><p>Add themes and extensions to Discord for a customized experience.</p></a>
+      <a href="https://www.startallback.com" target="_blank" class="app-panel"><h4>StartAllBack</h4><p>Customize Windows Start Menu, Taskbar, and File Explorer.</p></a>
+      <a href="https://betterdiscord.app/" target="_blank" class="app-panel"><h4>BetterDiscord</h4><p>Add themes and extensions to Discord for a customized experience.</p></a>
     </div>
 
     <div id="windows-misc" class="tab-content">
-      <a href="#" class="app-panel"><h4>Style2Paints</h4><p>AI-driven line art and sketch colorization tool.</p></a>
-      <a href="#" class="app-panel"><h4>Steam Workshop Downloader</h4><p>Download workshop items from a Steam link.</p></a>
+      <a href="https://github.com/lllyasviel/style2paints" target="_blank" class="app-panel"><h4>Style2Paints</h4><p>AI-driven line art and sketch colorization tool.</p></a>
+      <a href="http://steamworkshop.download" target="_blank" class="app-panel"><h4>Steam Workshop Downloader</h4><p>Download workshop items from a Steam link.</p></a>
+    </div>
+  </div>
+
+  <!-- Universal Content -->
+  <div id="universal" class="device-tab-content">
+    <div class="section-tabs">
+      <button class="section-tab-button active" onclick="showSectionTab(event,'universal-apps')">Apps</button>
+      <button class="section-tab-button" onclick="showSectionTab(event,'universal-websites')">Websites</button>
+    </div>
+
+    <div id="universal-apps" class="tab-content">
+      <a href="https://stremio.com" target="_blank" class="app-panel"><h4>Stremio</h4><p>Stream movies, TV shows, and more with addons and torrent integration.</p></a>
+      <a href="https://apps.kde.org/kdeconnect/" target="_blank" class="app-panel"><h4>KDE Connect</h4><p>Phone-PC integration for file transfer, notifications, and controls.</p></a>
+    </div>
+
+    <div id="universal-websites" class="tab-content">
+      <a href="https://vimm.net/" target="_blank" class="app-panel"><h4>Vimm's Lair</h4><p>Download classic console ROMs for emulation.</p></a>
+      <a href="https://fmhy.net/" target="_blank" class="app-panel"><h4>FMHY</h4><p>Huge list of trusted sites for pirating & modifying apps.</p></a>
+      <a href="https://psychonautwiki.org/" target="_blank" class="app-panel"><h4>PsychonautWiki</h4><p>Comprehensive resource for psychedelic research, substances, and culture.</p></a>
     </div>
   </div>
 
@@ -295,6 +326,15 @@
   function togglePlanned() {
     document.getElementById('plannedList').classList.toggle('show');
   }
+
+  window.addEventListener('scroll', function() {
+    const header = document.querySelector('header');
+    if (window.scrollY > 50) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  });
 </script>
 </body>
 </html>
